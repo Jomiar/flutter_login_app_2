@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_login_app/ui/pages/remember_password.dart';
 
 class EmailLoginPage extends StatefulWidget {
   const EmailLoginPage({super.key});
@@ -31,46 +32,84 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
         width: double.infinity,
         height: double.infinity,
         padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            Image.asset(
-              "assets/EDteam.png",
-              width: 150,
-              height: 150,
-            ),
-            Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    TextFormField(
-                      controller: _controller,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        label: Text('email'),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              //LOGO EDTEAM//
+              Image.asset(
+                "assets/EDteam.png",
+                width: 150,
+                height: 150,
+              ),
+              const SizedBox(height: 50),
+              //TEXTO AGREGA TUS CREDENCIALES//
+              const Text(
+                "Agrega tus credenciales",
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16),
+              //FORMULARIOS//
+              Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      //FORMULARIO EMAIL//
+                      TextFormField(
+                        controller: _controller,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          label: Text('email'),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty || value == '') {
+                            return 'El campo email es obligatorio';
+                          }
+                          return null;
+                        },
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty || value == '') {
-                          return 'El campo email es obligatorio';
-                        }
-                        return null;
-                      },
-                    ),
-                    TextFormField(
-                      controller: _controller2,
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        label: Text('password'),
+                      const SizedBox(height: 16),
+                      //FORMULARIO PASSWORD//
+                      TextFormField(
+                        controller: _controller2,
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          label: Text('password'),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty || value == '') {
+                            return 'El campo password es obligatorio';
+                          }
+                          return null;
+                        },
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty || value == '') {
-                          return 'El campo password es obligatorio';
-                        }
-                        return null;
-                      },
-                    )
-                  ],
-                ))
-          ],
+                      const SizedBox(height: 16),
+                      //TEXTO OLVIDE MI CONTRASEÑA//
+                      GestureDetector(
+                        child: Text(
+                          "Olvide mi contraseña",
+                          style: TextStyle(
+                              color: Colors.blue[700],
+                              decoration: TextDecoration.underline),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const RememberPassword()));
+                        },
+                      ),
+                      const SizedBox(height: 16),
+                      //TEXTO INICIAR SESION//
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: const Text("Iniciar sesion"),
+                      )
+                    ],
+                  ))
+            ],
+          ),
         ),
       ),
     );

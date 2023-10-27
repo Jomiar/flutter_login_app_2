@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => EmailLoginPage()));
+                            builder: (context) => const EmailLoginPage()));
                   },
                 ),
                 const Text("o"),
