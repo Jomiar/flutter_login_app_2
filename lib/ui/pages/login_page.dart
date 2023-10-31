@@ -20,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
       body: Container(
         width: double.infinity, //Hace que ocupe todo el ancho de la pantalla
+        height: double.infinity, //Hace que ocupe todo el ancho de la pantalla
         padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

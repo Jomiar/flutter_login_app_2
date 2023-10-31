@@ -27,6 +27,16 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          //BOTON PARA IR HACIA ATRAS//
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+        ),
       ),
       body: Container(
         width: double.infinity,
